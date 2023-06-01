@@ -24,10 +24,12 @@ class Heap:
 			if len(frequency_table) == 0:
 				break
 					
-			# insert z node to table
-			if z.value < self.frequency_table[0][1].value:
-				self.frequency_table.insert(0, z_pair)
-			else:
-				self.frequency_table.insert(1, z_pair)
+			# Find the correct position to insert the z node
+            		insert_index = 0
+          		while insert_index < len(self.frequency_table) and self.frequency_table[insert_index][1].value < z.value:
+                	insert_index += 1
+
+            		# Insert z node into the frequency table
+            		self.frequency_table.insert(insert_index, ('z', z))
 
 		self.head = z
